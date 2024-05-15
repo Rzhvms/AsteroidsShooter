@@ -43,7 +43,7 @@ namespace AsteroidsShooting
             SpaceShip.Texture2D = Content.Load<Texture2D>("SpaceShip");
             FireShot.Texture2D = Content.Load<Texture2D>("Fire");
             Asteroid.Texture2D = Content.Load<Texture2D>("Asteroid");
-            Asteroids.Initialize(_spriteBatch, _graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight);
+            ActionsInGame.Initialize(_spriteBatch, _graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight);
         }
 
         protected override void Update(GameTime gameTime)
@@ -59,19 +59,19 @@ namespace AsteroidsShooting
                     break;
 
                 case StateScene.Game:
-                    Asteroids.Update();
+                    ActionsInGame.Update();
                     if (KeyCheck(Keys.Q))
                         Scene = StateScene.SplashScreen;
-                    if (KeyCheck(Keys.Up) || KeyCheck(Keys.W)) 
-                        Asteroids.SpaceShip.MoveUp();
-                    if (KeyCheck(Keys.Down) || KeyCheck(Keys.S)) 
-                        Asteroids.SpaceShip.MoveDown();
-                    if (KeyCheck(Keys.Left) || KeyCheck(Keys.A)) 
-                        Asteroids.SpaceShip.MoveLeft();
-                    if (KeyCheck(Keys.Right) || KeyCheck(Keys.D)) 
-                        Asteroids.SpaceShip.MoveRight();
+                    if (KeyCheck(Keys.Up) || KeyCheck(Keys.W))
+                        ActionsInGame.SpaceShip.MoveUp();
+                    if (KeyCheck(Keys.Down) || KeyCheck(Keys.S))
+                        ActionsInGame.SpaceShip.MoveDown();
+                    if (KeyCheck(Keys.Left) || KeyCheck(Keys.A))
+                        ActionsInGame.SpaceShip.MoveLeft();
+                    if (KeyCheck(Keys.Right) || KeyCheck(Keys.D))
+                        ActionsInGame.SpaceShip.MoveRight();
                     if (KeyCheck(Keys.E) && OldKeyboardState.IsKeyUp(Keys.E))
-                        Asteroids.SpaceShipFire();
+                        ActionsInGame.SpaceShipFire();
                         break;
             }
             
@@ -97,7 +97,7 @@ namespace AsteroidsShooting
                     break;
 
                 case StateScene.Game:
-                    Asteroids.Draw();
+                    ActionsInGame.Draw();
                     break;
             }
 
