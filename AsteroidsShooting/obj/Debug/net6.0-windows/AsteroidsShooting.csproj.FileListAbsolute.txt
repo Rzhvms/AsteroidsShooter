@@ -80,3 +80,4 @@ C:\Users\16060\Desktop\AsteroidsShooting\obj\Debug\net6.0-windows\AsteroidsShoot
 C:\Users\16060\Desktop\AsteroidsShooting\obj\Debug\net6.0-windows\ref\AsteroidsShooting.dll
 C:\Users\16060\Desktop\AsteroidsShooting\bin\Debug\net6.0-windows\Content\SpaceShip.xnb
 C:\Users\16060\Desktop\AsteroidsShooting\bin\Debug\net6.0-windows\Content\Fire.xnb
+C:\Users\16060\Desktop\AsteroidsShooting\bin\Debug\net6.0-windows\Content\Asteroid.xnb

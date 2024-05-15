@@ -2,14 +2,13 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
+
 namespace AsteroidsShooting
 {
     enum StateScene
     {
         SplashScreen,
-        Game,
-        Final,
-        Pause
+        Game
     }
 
     public class Game1 : Game
@@ -40,10 +39,11 @@ namespace AsteroidsShooting
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             SplashScreen.Background = Content.Load<Texture2D>("SpaceBackground");
             SplashScreen.Font = Content.Load<SpriteFont>("SplashScreenFont");
-            Asteroids.Initialize(_spriteBatch, _graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight);
             Stars.Texture2D = Content.Load<Texture2D>("Star");
             SpaceShip.Texture2D = Content.Load<Texture2D>("SpaceShip");
             FireShot.Texture2D = Content.Load<Texture2D>("Fire");
+            Asteroid.Texture2D = Content.Load<Texture2D>("Asteroid");
+            Asteroids.Initialize(_spriteBatch, _graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight);
         }
 
         protected override void Update(GameTime gameTime)
