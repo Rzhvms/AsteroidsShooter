@@ -16,7 +16,7 @@ namespace AsteroidsShooting
         GraphicsDeviceManager _graphics;
         SpriteBatch _spriteBatch;
         StateScene Scene = StateScene.SplashScreen;
-        KeyboardState keyboardGetState, oldKeyboardState = Keyboard.GetState();
+        KeyboardState KeyboardGetState, OldKeyboardState = Keyboard.GetState();
 
         public Game1()
         {
@@ -48,7 +48,8 @@ namespace AsteroidsShooting
 
         protected override void Update(GameTime gameTime)
         {
-            keyboardGetState = Keyboard.GetState();
+            KeyboardGetState = Keyboard.GetState();
+
             switch (Scene)
             {
                 case StateScene.SplashScreen:
@@ -56,6 +57,7 @@ namespace AsteroidsShooting
                     if (KeyCheck(Keys.Space))
                         Scene = StateScene.Game;
                     break;
+
                 case StateScene.Game:
                     Asteroids.Update();
                     if (KeyCheck(Keys.Q))
@@ -68,33 +70,37 @@ namespace AsteroidsShooting
                         Asteroids.SpaceShip.MoveLeft();
                     if (KeyCheck(Keys.Right) || KeyCheck(Keys.D)) 
                         Asteroids.SpaceShip.MoveRight();
-                    if (KeyCheck(Keys.E) && oldKeyboardState.IsKeyUp(Keys.E))
+                    if (KeyCheck(Keys.E) && OldKeyboardState.IsKeyUp(Keys.E))
                         Asteroids.SpaceShipFire();
                         break;
             }
+            
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || KeyCheck(Keys.Escape))
                 Exit();
 
-            oldKeyboardState = keyboardGetState;
+            OldKeyboardState = KeyboardGetState;
 
             base.Update(gameTime);
         }
 
-        public bool KeyCheck(Keys key) => keyboardGetState.IsKeyDown(key);
+        public bool KeyCheck(Keys key) => KeyboardGetState.IsKeyDown(key);
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
             _spriteBatch.Begin();
+
             switch (Scene)
             {
                 case StateScene.SplashScreen:
                     SplashScreen.Draw(_spriteBatch);
                     break;
+
                 case StateScene.Game:
                     Asteroids.Draw();
                     break;
             }
+
             _spriteBatch.End();
 
             base.Draw(gameTime);

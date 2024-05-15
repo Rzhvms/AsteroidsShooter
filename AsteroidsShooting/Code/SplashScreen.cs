@@ -6,9 +6,9 @@ namespace AsteroidsShooting
     public static class SplashScreen
     {
         public static Texture2D Background;
+        public static SpriteFont Font;
         static int Visibility = 0;
         static Color Color;
-        public static SpriteFont Font;
         static Vector2 TextPosition = new(190, 200);
 
         public static void Draw(SpriteBatch spriteBatch)
