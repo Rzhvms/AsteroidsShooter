@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace AsteroidsShooting
 {
-    public class Asteroids
+    public class ActionsInGame
     {
         public static int Width, Height;
         public static Random Rand = new();
@@ -109,14 +109,14 @@ namespace AsteroidsShooting
 
         public void RandomSet()
         {
-            Position = new Vector2(Asteroids.GetRandomCount(Asteroids.Width, Asteroids.Width + 300),
-                Asteroids.GetRandomCount(0, Asteroids.Height));
+            Position = new Vector2(ActionsInGame.GetRandomCount(ActionsInGame.Width, ActionsInGame.Width + 300),
+                ActionsInGame.GetRandomCount(0, ActionsInGame.Height));
 
-            var colorSet = Asteroids.GetRandomCount(0, 256);
+            var colorSet = ActionsInGame.GetRandomCount(0, 256);
             Color = Color.FromNonPremultiplied(colorSet, colorSet, colorSet, colorSet);
         }
 
-        public void Draw() => Asteroids.SpriteBatch.Draw(Texture2D, Position, Color);
+        public void Draw() => ActionsInGame.SpriteBatch.Draw(Texture2D, Position, Color);
     }
 
     public class SpaceShip
@@ -138,7 +138,7 @@ namespace AsteroidsShooting
 
         public void MoveDown()
         {
-            if (Position.Y < Asteroids.Height - Texture2D.Height)
+            if (Position.Y < ActionsInGame.Height - Texture2D.Height)
                 Position.Y += SpaceShipSpeed;
         }
 
@@ -150,11 +150,11 @@ namespace AsteroidsShooting
 
         public void MoveRight()
         {
-            if (Position.X < Asteroids.Width - Texture2D.Width)
+            if (Position.X < ActionsInGame.Width - Texture2D.Width)
                 Position.X += SpaceShipSpeed;
         }
 
-        public void Draw() => Asteroids.SpriteBatch.Draw(Texture2D, Position, Color);
+        public void Draw() => ActionsInGame.SpriteBatch.Draw(Texture2D, Position, Color);
     }
 
     public class FireShot
@@ -182,13 +182,13 @@ namespace AsteroidsShooting
 
         public void Update()
         {
-            if (Position.X <= Asteroids.Width)
+            if (Position.X <= ActionsInGame.Width)
                 Position += Direction;
         }
 
-        public bool Hidden => Position.X > Asteroids.Width;
+        public bool Hidden => Position.X > ActionsInGame.Width;
 
-        public void Draw() => Asteroids.SpriteBatch.Draw(Texture2D, Position, Color);
+        public void Draw() => ActionsInGame.SpriteBatch.Draw(Texture2D, Position, Color);
     }
 
     public class Asteroid
@@ -235,15 +235,15 @@ namespace AsteroidsShooting
 
         public void RandomSet()
         {
-            Position = new Vector2(Asteroids.GetRandomCount(Asteroids.Width, Asteroids.Width + 300),
-                Asteroids.GetRandomCount(0, Asteroids.Height));
-            Direction = new Vector2(-(float)Asteroids.Rand.NextDouble() * 2 + 0.1f, 0f);
-            Scale = (float)Asteroids.Rand.NextDouble();
-            RotationSpeed = (float)(Asteroids.Rand.NextDouble() - 0.5) / 4;
+            Position = new Vector2(ActionsInGame.GetRandomCount(ActionsInGame.Width, ActionsInGame.Width + 300),
+                ActionsInGame.GetRandomCount(0, ActionsInGame.Height));
+            Direction = new Vector2(-(float)ActionsInGame.Rand.NextDouble() * 2 + 0.1f, 0f);
+            Scale = (float)ActionsInGame.Rand.NextDouble();
+            RotationSpeed = (float)(ActionsInGame.Rand.NextDouble() - 0.5) / 4;
 
         }
 
-        public void Draw() => Asteroids.SpriteBatch.Draw(Texture2D, Position, null, color,
+        public void Draw() => ActionsInGame.SpriteBatch.Draw(Texture2D, Position, null, color,
             Rotation, Center, Scale, SpriteEffects.None, 0);
     }
 }
